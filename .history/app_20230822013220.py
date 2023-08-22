@@ -23,7 +23,7 @@ def get_text_chunks(raw_text):
     
     chunks = text_splitter.split_text(raw_text)  # Use 'raw_text' as the input text
     
-    return chunks   
+    return chunks
     
 
 def main():
@@ -45,7 +45,6 @@ def main():
                 # st.write(raw_text)
                 # Get the text chunks
                 text_chunks = get_text_chunks(raw_text)
-                st.write(text_chunks)
                 # Create vector store
 
 if __name__ == '__main__':
