@@ -97,3 +97,6 @@ def main():
                     vectorstore)
 
 
+if __name__ == '__main__':
+    main()
+ 
