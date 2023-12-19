@@ -1,3 +1,5 @@
+
+from htmlTemplates import css, bot_template, user_template
 import streamlit as st
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
@@ -10,6 +12,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 
+
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -18,16 +21,17 @@ def get_pdf_text(pdf_docs):
             text += page.extract_text()
     return text
 
-
-def get_text_chunks(text):
+def get_text_chunks(raw_text):
     text_splitter = CharacterTextSplitter(
         separator="\n",
         chunk_size=1000,
         chunk_overlap=200,
         length_function=len
     )
-    chunks = text_splitter.split_text(text)
-    return chunks
+    
+    chunks = text_splitter.split_text(raw_text)  # Use 'raw_text' as the input text
+    
+    return chunks   
 
 def get_vectorstore(text_chunks):
     # embeddings = OpenAIEmbeddings()
